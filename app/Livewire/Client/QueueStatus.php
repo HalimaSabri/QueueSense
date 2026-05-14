@@ -4,6 +4,7 @@ namespace App\Livewire\Client;
 
 use App\Models\Ticket;
 use Livewire\Component;
+use Illuminate\Support\Facades\Http;
 
 class QueueStatus extends Component
 {
@@ -33,7 +34,26 @@ class QueueStatus extends Component
             return;
         }
 
-        // Simple estimation: average time * position
+        // Attempt to get prediction from Python AI microservice
+        try {
+            $response = Http::timeout(2)->get('http://127.0.0.1:8000/predict', [
+                'service_id' => $this->ticket->service_id,
+                'queue_length' => $this->position
+            ]);
+            
+            if ($response->successful()) {
+                $this->estimatedWaitTime = $response->json('estimated_wait_time');
+            } else {
+                $this->fallbackEstimation();
+            }
+        } catch (\Exception $e) {
+            // Fallback if the microservice is down
+            $this->fallbackEstimation();
+        }
+    }
+
+    private function fallbackEstimation()
+    {
         $averageTime = $this->ticket->service->average_time ?? 10;
         $this->estimatedWaitTime = $this->position * $averageTime;
     }

@@ -10,9 +10,19 @@ Route::view('/', 'welcome');
 Route::get('/client', TakeTicket::class)->name('home');
 Route::get('/queue/{ticket}', QueueStatus::class)->name('queue.status');
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard', function () {
+    if (auth()->user()->role === 'admin') return redirect()->route('admin.dashboard');
+    if (auth()->user()->role === 'agent') return redirect()->route('agent.dashboard');
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/agent/dashboard', \App\Livewire\Agent\Dashboard::class)
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('agent.dashboard');
+
+Route::get('/admin/dashboard', \App\Livewire\Admin\Dashboard::class)
+    ->middleware(['auth', 'verified'])
+    ->name('admin.dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
