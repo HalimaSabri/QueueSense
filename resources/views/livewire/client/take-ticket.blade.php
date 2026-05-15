@@ -1,4 +1,11 @@
-<div class="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-6 text-white font-sans">
+<div class="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-6 text-white font-sans relative">
+    <!-- Top Right Login Link -->
+    <div class="absolute top-6 right-6">
+        <a href="{{ route('login') }}" class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all text-xs font-bold uppercase tracking-widest">
+            Staff Login
+        </a>
+    </div>
+
     <div class="max-w-3xl w-full bg-slate-800/50 backdrop-blur-xl border border-white/10 p-10 rounded-3xl shadow-2xl">
         <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-4 text-center">
             Welcome to QueueSense
