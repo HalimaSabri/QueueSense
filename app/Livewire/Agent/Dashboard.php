@@ -74,6 +74,6 @@ class Dashboard extends Component
         return view('livewire.agent.dashboard', [
             'queueCount' => $queueCount,
             'queues' => $queues,
-        ]);
+        ])->layout('layouts.app');
     }
 }
