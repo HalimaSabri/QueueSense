@@ -1,80 +1,107 @@
-<div class="py-12" wire:poll.5s>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+<div class="py-12 bg-slate-50 min-h-screen" wire:poll.5s>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
         
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100">
-            <div class="p-6 lg:p-8 bg-white border-b border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div>
-                    <h1 class="text-3xl font-bold text-gray-900">Agent Workspace</h1>
-                    <p class="mt-2 text-gray-500">Manage your queue and call the next waiting clients.</p>
-                </div>
-                
-                <div class="text-center md:text-right">
-                    <div class="inline-flex items-center justify-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full font-medium text-sm">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        {{ $queueCount }} clients waiting
-                    </div>
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+                <h1 class="text-4xl font-black text-slate-900 tracking-tight">Agent Workspace</h1>
+                <p class="mt-1 text-slate-500 font-medium">Serving excellence, one client at a time.</p>
+            </div>
+            
+            <div class="flex items-center bg-white p-2 rounded-2xl shadow-sm border border-slate-200/60">
+                <div class="px-4 py-2 bg-blue-50 text-blue-600 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center">
+                    <span class="relative flex h-2 w-2 mr-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    {{ $queueCount }} in queue
                 </div>
             </div>
+        </div>
 
-            <div class="bg-gray-50 p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- Current Service Panel -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center justify-center min-h-[300px] relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Service Panel (Active) -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-200/60 p-10 flex flex-col items-center justify-center min-h-[450px] relative overflow-hidden transition-all duration-500">
                     @if($activeTicket)
-                        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-400 to-emerald-400"></div>
-                        <h2 class="text-sm uppercase tracking-widest text-gray-400 font-semibold mb-2">Currently Serving</h2>
-                        <div class="text-7xl font-black text-gray-900 mb-6">{{ $activeTicket->number }}</div>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-medium mb-8">
-                            {{ $activeTicket->service->name }}
-                        </span>
-                        
-                        <button wire:click="completeService" class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-                            Complete Service
-                        </button>
-                    @else
+                        <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                        <div class="absolute top-10 right-10">
+                            <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest border border-blue-100">
+                                In Progress
+                            </span>
+                        </div>
+
                         <div class="text-center">
-                            <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
-                                <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-black mb-4 block">Currently Serving</span>
+                            <div class="text-9xl font-black text-slate-900 mb-6 tracking-tighter">{{ $activeTicket->number }}</div>
+                            <div class="inline-flex items-center px-6 py-2 bg-slate-100 text-slate-700 rounded-2xl font-bold text-sm mb-12">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                {{ $activeTicket->service->name }}
                             </div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-2">Ready for next client</h2>
-                            <p class="text-gray-500 mb-8 max-w-xs mx-auto">Click below to call the next person in line from your assigned services.</p>
                             
-                            <button wire:click="callNext" @if($queueCount === 0) disabled @endif class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none">
+                            <div class="flex justify-center">
+                                <button wire:click="completeService" class="group relative px-12 py-5 bg-slate-900 text-white font-black rounded-2xl shadow-2xl shadow-slate-900/20 hover:bg-slate-800 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center">
+                                    <span class="mr-3 uppercase tracking-widest">Complete Service</span>
+                                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    @else
+                        <div class="text-center max-w-sm">
+                            <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-slate-100 shadow-inner">
+                                <svg class="w-12 h-12 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </div>
+                            <h2 class="text-2xl font-black text-slate-900 mb-3">Idle & Ready</h2>
+                            <p class="text-slate-500 mb-10 leading-relaxed font-medium">Ready to assist the next client? Click the button below to pull the next ticket from the queue.</p>
+                            
+                            <button wire:click="callNext" @if($queueCount === 0) disabled @endif class="w-full px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-black rounded-2xl shadow-xl shadow-blue-500/30 transition-all transform hover:-translate-y-1 active:scale-95 disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed disabled:transform-none uppercase tracking-widest">
                                 Call Next Client
                             </button>
                         </div>
                     @endif
                 </div>
+            </div>
 
-                <!-- Queue List -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                        Up Next
-                        <span class="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">{{ count($queues) }}</span>
-                    </h3>
+            <!-- Sidebar (Queue List) -->
+            <div class="space-y-8">
+                <div class="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-200/60 p-8 flex flex-col h-[550px]">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-xl font-black text-slate-900 tracking-tight">Queue List</h3>
+                        <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-tighter">{{ count($queues) }}</span>
+                    </div>
                     
-                    <div class="flex-1 overflow-y-auto pr-2 space-y-3 max-h-[300px]">
+                    <div class="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
                         @forelse($queues as $q)
-                            <div class="flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-blue-100 hover:bg-blue-50/50 transition-colors">
-                                <div>
-                                    <span class="block font-bold text-gray-900 text-lg">{{ $q->number }}</span>
-                                    <span class="block text-sm text-gray-500">{{ $q->service->name }}</span>
+                            <div class="group p-5 rounded-2xl border border-slate-100 bg-slate-50/30 hover:bg-white hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">{{ $q->number }}</span>
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $q->created_at->format('H:i') }}</span>
                                 </div>
-                                <div class="text-right">
-                                    <span class="text-xs font-medium text-gray-400 block mb-1">Waiting</span>
-                                    <span class="text-sm text-gray-700">{{ $q->created_at->diffForHumans(null, true, true) }}</span>
+                                <div class="flex items-center text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2"></div>
+                                    {{ $q->service->name }}
                                 </div>
                             </div>
                         @empty
-                            <div class="h-full flex flex-col items-center justify-center text-gray-400 py-12">
-                                <svg class="w-12 h-12 mb-3 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
-                                <p>The queue is empty.</p>
+                            <div class="flex-1 flex flex-col items-center justify-center text-slate-400 space-y-4">
+                                <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center opacity-50">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <p class="font-bold uppercase text-[10px] tracking-widest">Queue is clear</p>
                             </div>
                         @endforelse
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+</style>
