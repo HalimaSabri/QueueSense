@@ -43,13 +43,13 @@
             </div>
 
             @if($ticket->status === 'processing')
-                <div class="p-8 bg-indigo-600 rounded-[2rem] text-white font-bold mb-10 flex flex-col items-center justify-center gap-4 shadow-2xl shadow-indigo-500/40 animate-bounce">
-                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div class="p-8 bg-white border-2 border-indigo-600 rounded-[2rem] text-slate-900 font-bold mb-10 flex flex-col items-center justify-center gap-4 shadow-2xl shadow-indigo-500/10 animate-bounce">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center">
+                        <svg class="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <div class="text-center">
-                        <span class="block text-2xl font-extrabold uppercase tracking-tight">It's your turn!</span>
-                        <span class="text-indigo-100 text-[10px] uppercase tracking-widest font-bold">Please proceed to service point</span>
+                        <span class="block text-2xl font-extrabold uppercase tracking-tight text-slate-900">It's your turn!</span>
+                        <span class="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Please proceed to service point</span>
                     </div>
                 </div>
             @endif

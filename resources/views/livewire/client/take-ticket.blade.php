@@ -21,8 +21,8 @@
                 <button wire:click="takeTicket({{ $service->id }})" 
                     class="group relative flex flex-col h-full bg-white border border-slate-200 rounded-3xl p-10 text-left transition-all duration-300 hover:border-indigo-600 hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1">
                     
-                    <div class="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-8 group-hover:bg-indigo-600 transition-all duration-300">
-                        <svg class="w-7 h-7 text-indigo-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-8 group-hover:bg-indigo-100 transition-all duration-300">
+                        <svg class="w-7 h-7 text-indigo-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
 
                     <h3 class="text-2xl font-bold text-slate-900 mb-4 font-['Outfit']">{{ $service->name }}</h3>
@@ -30,11 +30,11 @@
                     
                     <div class="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] uppercase tracking-wider text-slate-600 font-bold mb-1">Current Wait</span>
-                            <span class="text-xl font-bold text-slate-900">{{ $service->average_time }} <span class="text-[10px] text-slate-600 uppercase">min</span></span>
+                            <span class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">Current Wait</span>
+                            <span class="text-xl font-bold text-slate-900">{{ $service->average_time }} <span class="text-[10px] text-slate-500 uppercase">min</span></span>
                         </div>
-                        <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-600 transition-all duration-300">
-                            <svg class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 transition-all duration-300">
+                            <svg class="w-5 h-5 text-slate-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </div>
                     </div>
                 </button>
