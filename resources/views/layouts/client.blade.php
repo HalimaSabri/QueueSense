@@ -15,7 +15,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-[#030712] text-slate-200 selection:bg-indigo-500/30">
+    <body class="font-sans antialiased bg-[#0a0a0a] text-slate-300">
         {{ $slot }}
     </body>
 </html>
