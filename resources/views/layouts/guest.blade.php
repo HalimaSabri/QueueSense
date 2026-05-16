@@ -31,7 +31,7 @@
             </div>
 
             <div class="mt-10 relative z-10">
-                <a href="/" class="text-[10px] font-bold text-slate-400 hover:text-indigo-600 uppercase tracking-widest transition-colors flex items-center">
+                <a href="/" class="text-[10px] font-bold text-slate-600 hover:text-indigo-600 uppercase tracking-widest transition-colors flex items-center">
                     <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     Back to Public Terminal
                 </a>

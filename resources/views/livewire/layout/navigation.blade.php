@@ -33,15 +33,15 @@ new class extends Component
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ms-16 sm:flex h-full">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors border-b-2 border-transparent">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate class="text-[11px] font-bold uppercase tracking-widest text-slate-600 hover:text-slate-900 transition-colors border-b-2 border-transparent">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
                     @if(auth()->user()->role === 'admin')
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" class="text-[11px] font-bold uppercase tracking-widest text-slate-600 hover:text-slate-900 transition-colors">
                             {{ __('Analytics') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('admin.agents')" :active="request()->routeIs('admin.agents')" wire:navigate class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
+                        <x-nav-link :href="route('admin.agents')" :active="request()->routeIs('admin.agents')" wire:navigate class="text-[11px] font-bold uppercase tracking-widest text-slate-600 hover:text-slate-900 transition-colors">
                             {{ __('Staff Control') }}
                         </x-nav-link>
                     @endif
@@ -62,7 +62,7 @@ new class extends Component
                         <x-slot name="content">
                             <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-2xl">
                                 <div class="px-6 py-4 border-b border-slate-100 bg-slate-50">
-                                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Authenticated as</p>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-600 mb-1">Authenticated as</p>
                                     <p class="text-[12px] font-bold text-slate-900 truncate">{{ auth()->user()->email }}</p>
                                 </div>
 
@@ -84,7 +84,7 @@ new class extends Component
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-3 rounded-xl text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-3 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -106,7 +106,7 @@ new class extends Component
         <div class="pt-6 pb-8 border-t border-slate-100 bg-slate-50">
             <div class="px-8 py-4 mb-4">
                 <div class="font-bold text-base text-slate-900 font-['Outfit']" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-                <div class="font-bold text-[10px] text-slate-400 uppercase tracking-widest mt-1">{{ auth()->user()->email }}</div>
+                <div class="font-bold text-[10px] text-slate-600 uppercase tracking-widest mt-1">{{ auth()->user()->email }}</div>
             </div>
 
             <div class="space-y-1 px-4">

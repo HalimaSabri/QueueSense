@@ -5,7 +5,7 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div>
                 <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight font-['Outfit']">Service Dashboard</h1>
-                <p class="mt-2 text-slate-500 font-medium leading-relaxed">Managing client throughput and service excellence.</p>
+                <p class="mt-2 text-slate-600 font-medium leading-relaxed">Managing client throughput and service excellence.</p>
             </div>
             
             <div class="flex items-center bg-white px-5 py-3 rounded-2xl shadow-sm border border-slate-200">
@@ -14,7 +14,7 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
                     </span>
-                    <span class="text-indigo-600 mr-2">{{ $queueCount }}</span> <span class="text-slate-500">Pending Requests</span>
+                    <span class="text-indigo-600 mr-2">{{ $queueCount }}</span> <span class="text-slate-600">Pending Requests</span>
                 </div>
             </div>
         </div>
@@ -33,10 +33,10 @@
                         </div>
 
                         <div class="text-center">
-                            <span class="text-[11px] uppercase tracking-[0.2em] text-slate-500 font-bold mb-6 block">Current Client Identity</span>
+                            <span class="text-[11px] uppercase tracking-[0.2em] text-slate-600 font-bold mb-6 block">Current Client Identity</span>
                             <div class="text-[10rem] font-black text-slate-900 mb-8 leading-none font-['Outfit'] tracking-tighter">{{ $activeTicket->number }}</div>
                             <div class="inline-flex items-center px-6 py-2.5 bg-slate-50 text-slate-600 border border-slate-100 rounded-2xl font-bold text-sm mb-12">
-                                <svg class="w-4 h-4 mr-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <svg class="w-4 h-4 mr-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                                 {{ $activeTicket->service->name }}
                             </div>
                             
@@ -76,7 +76,7 @@
                             <div class="group p-6 rounded-[1.5rem] border border-slate-100 bg-slate-50/50 hover:bg-indigo-50/50 hover:border-indigo-200 transition-all duration-300">
                                 <div class="flex items-center justify-between mb-3">
                                     <span class="text-3xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors font-['Outfit'] tracking-tighter">{{ $q->number }}</span>
-                                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{{ $q->created_at->format('H:i') }}</span>
+                                    <span class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">{{ $q->created_at->format('H:i') }}</span>
                                 </div>
                                 <div class="flex items-center text-[10px] font-bold text-slate-600 uppercase tracking-widest">
                                     <div class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2.5"></div>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                         @empty
-                            <div class="flex-1 flex flex-col items-center justify-center text-slate-500 space-y-6">
+                            <div class="flex-1 flex flex-col items-center justify-center text-slate-600 space-y-6">
                                 <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center opacity-50 border border-slate-100">
                                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 </div>
