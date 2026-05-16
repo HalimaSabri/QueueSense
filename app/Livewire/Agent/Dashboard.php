@@ -20,10 +20,13 @@ class Dashboard extends Component
 
     public function loadActiveTicket()
     {
-        $services = Auth::user()->services()->pluck('services.id');
-        $this->activeTicket = Ticket::whereIn('service_id', $services)
-            ->where('status', 'processing')
-            ->first();
+        $serviceId = Auth::user()->service_id;
+        if ($serviceId) {
+            $this->activeTicket = Ticket::where('service_id', $serviceId)
+                ->where('status', 'processing')
+                ->where('agent_id', Auth::id())
+                ->first();
+        }
     }
 
     public function callNext()
@@ -32,31 +35,37 @@ class Dashboard extends Component
             return;
         }
 
-        $services = Auth::user()->services()->pluck('services.id');
+        $serviceId = Auth::user()->service_id;
+        if (!$serviceId) {
+            return;
+        }
         
-        $nextTicket = Ticket::whereIn('service_id', $services)
+        $nextTicket = Ticket::where('service_id', $serviceId)
             ->where('status', 'waiting')
             ->orderBy('id', 'asc')
             ->first();
 
         if ($nextTicket) {
-            $nextTicket->update(['status' => 'processing']);
+            $nextTicket->update([
+                'status' => 'processing',
+                'agent_id' => Auth::id()
+            ]);
             $this->activeTicket = $nextTicket;
-            // Optionally dispatch event here
         }
     }
 
     public function completeService()
     {
         if ($this->activeTicket) {
-            $waitTime = $this->activeTicket->updated_at->diffInSeconds($this->activeTicket->created_at);
+            $ticket = $this->activeTicket;
+            $waitTime = $ticket->updated_at->diffInSeconds($ticket->created_at);
             
-            $this->activeTicket->update(['status' => 'completed']);
+            $ticket->update(['status' => 'completed']);
             
-            $serviceTime = now()->diffInSeconds($this->activeTicket->updated_at);
+            $serviceTime = now()->diffInSeconds($ticket->updated_at);
             
             StatisticsLog::create([
-                'ticket_id' => $this->activeTicket->id,
+                'ticket_id' => $ticket->id,
                 'wait_time' => $waitTime,
                 'service_time' => $serviceTime,
             ]);
@@ -67,9 +76,14 @@ class Dashboard extends Component
 
     public function render()
     {
-        $services = Auth::user()->services()->pluck('services.id');
-        $queueCount = Ticket::whereIn('service_id', $services)->where('status', 'waiting')->count();
-        $queues = Ticket::whereIn('service_id', $services)->where('status', 'waiting')->orderBy('id', 'asc')->get();
+        $serviceId = Auth::user()->service_id;
+        $queueCount = 0;
+        $queues = collect();
+
+        if ($serviceId) {
+            $queueCount = Ticket::where('service_id', $serviceId)->where('status', 'waiting')->count();
+            $queues = Ticket::where('service_id', $serviceId)->where('status', 'waiting')->orderBy('id', 'asc')->get();
+        }
 
         return view('livewire.agent.dashboard', [
             'queueCount' => $queueCount,
