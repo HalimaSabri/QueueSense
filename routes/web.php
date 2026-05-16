@@ -22,6 +22,10 @@ Route::get('/admin/dashboard', \App\Livewire\Admin\Dashboard::class)
     ->middleware(['auth', 'verified'])
     ->name('admin.dashboard');
 
+Route::get('/admin/agents', \App\Livewire\Admin\ManageAgents::class)
+    ->middleware(['auth', 'verified'])
+    ->name('admin.agents');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');

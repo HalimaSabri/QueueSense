@@ -11,7 +11,7 @@
             <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-slate-900 font-['Outfit']">
                 Queue<span class="text-indigo-600">Sense</span>
             </h1>
-            <p class="text-slate-500 text-lg max-w-xl mx-auto leading-relaxed">
+            <p class="text-slate-600 text-lg max-w-xl mx-auto leading-relaxed">
                 Experience seamless service. Select a category below to receive your digital ticket.
             </p>
         </div>
@@ -26,21 +26,21 @@
                     </div>
 
                     <h3 class="text-2xl font-bold text-slate-900 mb-4 font-['Outfit']">{{ $service->name }}</h3>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">Join the queue for specialized assistance from our expert team.</p>
+                    <p class="text-slate-600 text-sm mb-10 leading-relaxed">Join the queue for specialized assistance from our expert team.</p>
                     
                     <div class="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between">
                         <div>
-                            <span class="block text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Current Wait</span>
-                            <span class="text-xl font-bold text-slate-900">{{ $service->average_time }} <span class="text-[10px] text-slate-400 uppercase">min</span></span>
+                            <span class="block text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">Current Wait</span>
+                            <span class="text-xl font-bold text-slate-900">{{ $service->average_time }} <span class="text-[10px] text-slate-500 uppercase">min</span></span>
                         </div>
                         <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-600 transition-all duration-300">
-                            <svg class="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <svg class="w-5 h-5 text-slate-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </div>
                     </div>
                 </button>
             @empty
                 <div class="col-span-full text-center py-20 bg-white rounded-3xl border border-dashed border-slate-200">
-                    <p class="text-slate-400 text-sm uppercase tracking-widest font-bold">Systems Offline • No Services Available</p>
+                    <p class="text-slate-500 text-sm uppercase tracking-widest font-bold">Systems Offline • No Services Available</p>
                 </div>
             @endforelse
         </div>

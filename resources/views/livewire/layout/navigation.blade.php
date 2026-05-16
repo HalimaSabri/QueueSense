@@ -38,11 +38,11 @@ new class extends Component
                     </x-nav-link>
                     
                     @if(auth()->user()->role === 'admin')
-                        <x-nav-link href="#" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
                             {{ __('Analytics') }}
                         </x-nav-link>
-                        <x-nav-link href="#" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
-                            {{ __('Management') }}
+                        <x-nav-link :href="route('admin.agents')" :active="request()->routeIs('admin.agents')" wire:navigate class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors">
+                            {{ __('Staff Control') }}
                         </x-nav-link>
                     @endif
                 </div>
