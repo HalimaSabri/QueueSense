@@ -20,13 +20,10 @@ class Dashboard extends Component
 
     public function loadActiveTicket()
     {
-        $serviceId = Auth::user()->service_id;
-        if ($serviceId) {
-            $this->activeTicket = Ticket::where('service_id', $serviceId)
-                ->where('status', 'processing')
-                ->where('agent_id', Auth::id())
-                ->first();
-        }
+        // An agent's active ticket is just whatever is processing and assigned to them, regardless of service_id restriction
+        $this->activeTicket = Ticket::where('status', 'processing')
+            ->where('user_id', Auth::id())
+            ->first();
     }
 
     public function callNext()
@@ -36,19 +33,19 @@ class Dashboard extends Component
         }
 
         $serviceId = Auth::user()->service_id;
-        if (!$serviceId) {
-            return;
+        
+        $query = Ticket::where('status', 'waiting')->orderBy('id', 'asc');
+        
+        if ($serviceId) {
+            $query->where('service_id', $serviceId);
         }
         
-        $nextTicket = Ticket::where('service_id', $serviceId)
-            ->where('status', 'waiting')
-            ->orderBy('id', 'asc')
-            ->first();
+        $nextTicket = $query->first();
 
         if ($nextTicket) {
             $nextTicket->update([
                 'status' => 'processing',
-                'agent_id' => Auth::id()
+                'user_id' => Auth::id()
             ]);
             $this->activeTicket = $nextTicket;
         }
@@ -77,13 +74,15 @@ class Dashboard extends Component
     public function render()
     {
         $serviceId = Auth::user()->service_id;
-        $queueCount = 0;
-        $queues = collect();
-
+        
+        $query = Ticket::where('status', 'waiting');
+        
         if ($serviceId) {
-            $queueCount = Ticket::where('service_id', $serviceId)->where('status', 'waiting')->count();
-            $queues = Ticket::where('service_id', $serviceId)->where('status', 'waiting')->orderBy('id', 'asc')->get();
+            $query->where('service_id', $serviceId);
         }
+        
+        $queueCount = (clone $query)->count();
+        $queues = $query->orderBy('id', 'asc')->get();
 
         return view('livewire.agent.dashboard', [
             'queueCount' => $queueCount,
