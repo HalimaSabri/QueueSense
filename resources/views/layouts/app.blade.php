@@ -15,13 +15,13 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-[#030712] text-slate-200 selection:bg-indigo-500/30">
+    <body class="font-sans antialiased bg-[#f4f6f8] text-slate-900">
         <div class="min-h-screen">
             <livewire:layout.navigation />
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white/[0.02] border-b border-white/5 backdrop-blur-xl">
+                <header class="bg-white shadow-sm border-b border-gray-200/60 z-10 relative">
                     <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
