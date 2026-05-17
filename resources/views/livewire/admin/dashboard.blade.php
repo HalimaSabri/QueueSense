@@ -8,8 +8,6 @@
             </div>
             
             <div class="flex items-center gap-3 bg-white p-2 rounded-2xl shadow-sm border border-slate-200/60">
-                <button class="px-4 py-2 bg-slate-900 text-slate-900 text-xs font-black rounded-xl uppercase tracking-widest hover:bg-slate-800 transition-colors">Export Report</button>
-                <div class="w-px h-6 bg-slate-200 mx-1"></div>
                 <span class="px-4 text-slate-600 text-xs font-bold">{{ now()->format('M d, Y') }}</span>
             </div>
         </div>
