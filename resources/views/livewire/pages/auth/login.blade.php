@@ -64,7 +64,7 @@ new #[Layout('layouts.guest')] class extends Component
             @endif
         </div>
 
-        <button type="submit" class="w-full py-5 bg-transparent border-2 border-black text-black text-sm font-bold rounded-2xl hover:bg-slate-50 hover:shadow-lg transition-all active:scale-[0.98] uppercase tracking-widest">
+        <button type="submit" class="w-full py-5 bg-white border-2 border-black text-black text-sm font-bold rounded-2xl hover:bg-slate-50 hover:shadow-lg transition-all active:scale-[0.98] uppercase tracking-widest">
             Enter Workspace
         </button>
     </form>
