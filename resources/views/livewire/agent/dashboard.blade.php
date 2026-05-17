@@ -49,7 +49,7 @@
                         <p class="text-slate-500 mb-10 text-base leading-relaxed">System in standby. Click below to retrieve the next client from the queue.</p>
                         
                         <!-- Well Defined Button -->
-                        <button wire:click="callNext" @if($queueCount === 0) disabled @endif class="w-full py-5 px-8 bg-[#e2e8f0] text-slate-900 text-sm font-bold rounded-2xl hover:bg-slate-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">
+                        <button wire:click="callNext" @if($queueCount === 0) disabled @endif class="w-full py-5 px-8 bg-transparent border-2 border-slate-900 text-slate-900 text-sm font-bold rounded-2xl hover:bg-slate-50 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest">
                             Pull Next Client
                         </button>
                     </div>
