@@ -15,22 +15,28 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-white text-slate-900">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center p-6">
-            <div class="mb-12">
-                <a href="/" wire:navigate class="flex flex-col items-center">
-                    <span class="text-2xl font-bold tracking-tight text-slate-900 font-['Outfit'] underline decoration-indigo-600 decoration-2 underline-offset-4">QueueSense</span>
+    <body class="font-sans antialiased bg-slate-50 text-slate-900">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center p-6 relative">
+            <!-- Background Decorative Element -->
+            <div class="absolute top-0 left-0 w-full h-64 bg-indigo-600/5 -skew-y-6 transform origin-top-left"></div>
+
+            <div class="relative z-10 mb-12">
+                <a href="/" wire:navigate class="flex flex-col items-center group">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-xl shadow-indigo-500/20 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 font-['Outfit']">Queue<span class="text-indigo-600">Sense</span></span>
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md border-t border-slate-100 pt-12">
+            <div class="w-full sm:max-w-md bg-white border border-slate-200 shadow-2xl shadow-slate-200/50 rounded-[2.5rem] p-10 md:p-12 relative z-10">
                 {{ $slot }}
             </div>
 
-            <div class="mt-12 pt-8 border-t border-slate-50 w-full sm:max-w-md flex justify-center">
+            <div class="mt-12 relative z-10">
                 <a href="/" class="text-[10px] font-bold text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors flex items-center">
                     <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                    Public Terminal
+                    Return to Public View
                 </a>
             </div>
         </div>
