@@ -31,7 +31,7 @@
             </div>
 
             <div class="mt-12 relative z-10">
-                <a href="/" class="text-xs font-bold text-black hover:bg-slate-50 transition-all flex items-center bg-white px-5 py-3 rounded-full border-2 border-black hover:shadow-md uppercase tracking-widest">
+                <a href="/" class="text-xs font-bold text-slate-500 hover:text-slate-900 transition-all flex items-center bg-white px-5 py-3 rounded-full shadow-sm hover:shadow-md uppercase tracking-widest border border-gray-200/60">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     Return to Public View
                 </a>

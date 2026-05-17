@@ -43,33 +43,39 @@ new class extends Component
     </div>
 
     <!-- User Section -->
-    <div class="p-8 border-t border-white/10">
-        <x-dropdown align="left" width="48">
-            <x-slot name="trigger">
-                <button class="flex items-center w-full p-2.5 bg-white/5 rounded-[1.25rem] hover:bg-white/10 transition-all text-left group">
-                    <div class="w-12 h-12 rounded-[1rem] bg-white text-[#1c1c1e] flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
-                        @if(auth()->user()) {{ substr(auth()->user()->name, 0, 1) }} @else ? @endif
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-sm font-bold text-white leading-tight">@if(auth()->user()) {{ auth()->user()->name }} @else User @endif</p>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">@if(auth()->user()) {{ auth()->user()->role }} @else Guest @endif</p>
-                    </div>
-                    <svg class="ml-auto w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    <div class="p-8 border-t border-white/10 relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
+        
+        <!-- Dropdown Menu (Opens Upwards) -->
+        <div x-show="open"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 scale-95 translate-y-2"
+             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-75"
+             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+             x-transition:leave-end="opacity-0 scale-95 translate-y-2"
+             class="absolute z-50 bottom-full left-8 mb-4 w-56"
+             style="display: none;"
+             @click="open = false">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden ring-1 ring-black/5">
+                <a href="{{ route('profile') }}" wire:navigate class="block text-xs font-bold py-4 px-6 text-slate-700 hover:bg-slate-50 hover:text-[#1c1c1e] transition-colors border-b border-slate-100">
+                    {{ __('Account Settings') }}
+                </a>
+                <button wire:click="logout" class="w-full text-start block text-xs font-bold py-4 px-6 text-rose-600 hover:bg-rose-50 transition-colors">
+                    {{ __('Sign Out') }}
                 </button>
-            </x-slot>
+            </div>
+        </div>
 
-            <x-slot name="content">
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-2 translate-x-4 -translate-y-4">
-                    <x-dropdown-link :href="route('profile')" wire:navigate class="text-xs font-bold py-4 px-6 text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors border-b border-slate-50">
-                        {{ __('Account Settings') }}
-                    </x-dropdown-link>
-                    <button wire:click="logout" class="w-full text-start">
-                        <x-dropdown-link class="text-xs font-bold py-4 px-6 text-rose-600 hover:bg-rose-50 transition-colors">
-                            {{ __('Sign Out') }}
-                        </x-dropdown-link>
-                    </button>
-                </div>
-            </x-slot>
-        </x-dropdown>
+        <!-- Trigger Button -->
+        <button @click="open = ! open" class="flex items-center w-full p-2.5 bg-white/5 rounded-[1.25rem] hover:bg-white/10 transition-all text-left group">
+            <div class="w-12 h-12 rounded-[1rem] bg-white text-[#1c1c1e] flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
+                @if(auth()->user()) {{ substr(auth()->user()->name, 0, 1) }} @else ? @endif
+            </div>
+            <div class="ml-4">
+                <p class="text-sm font-bold text-white leading-tight">@if(auth()->user()) {{ auth()->user()->name }} @else User @endif</p>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mt-0.5">@if(auth()->user()) {{ auth()->user()->role }} @else Guest @endif</p>
+            </div>
+            <svg class="ml-auto w-5 h-5 text-gray-400 transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+        </button>
     </div>
 </nav>
