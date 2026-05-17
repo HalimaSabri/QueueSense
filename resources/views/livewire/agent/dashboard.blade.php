@@ -24,15 +24,15 @@
             <div class="lg:col-span-8 flex flex-col">
                 
                 @if($activeTicket)
-                <!-- Active Session Card -->
-                <div class="bg-[#e2e8f0] rounded-[2.5rem] p-12 flex flex-col items-center justify-center relative overflow-hidden shadow-sm border border-slate-300/50 min-h-[500px] w-full">
+                <!-- Active Session Card - Dark Theme Matching Image -->
+                <div class="bg-[#1c1c1e] rounded-[2.5rem] p-12 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl shadow-black/10 min-h-[500px] w-full">
                     <div class="text-center z-10 w-full max-w-md">
-                        <span class="text-xs uppercase tracking-[0.25em] text-slate-500 font-bold mb-6 block">Currently Serving</span>
-                        <div class="text-8xl md:text-[10rem] font-black text-slate-900 leading-none tracking-tighter mb-12">
+                        <span class="text-xs uppercase tracking-[0.25em] text-gray-400 font-bold mb-6 block">Currently Serving</span>
+                        <div class="text-8xl md:text-[10rem] font-black text-white leading-none tracking-tighter mb-12">
                             {{ $activeTicket->number }}
                         </div>
                         
-                        <button wire:click="completeService" class="group w-full py-5 px-8 bg-white border-2 border-black text-black text-sm font-bold rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center mx-auto hover:shadow-lg uppercase tracking-widest">
+                        <button wire:click="completeService" class="group w-full py-5 px-8 bg-white text-[#1c1c1e] text-sm font-bold rounded-2xl hover:bg-gray-200 transition-all flex items-center justify-center mx-auto shadow-lg uppercase tracking-widest">
                             Complete Session
                             <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
                         </button>
@@ -48,8 +48,7 @@
                         <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Ready for Service</h2>
                         <p class="text-slate-500 mb-10 text-base leading-relaxed">System in standby. Click below to retrieve the next client from the queue.</p>
                         
-                        <!-- Well Defined Button -->
-                        <button wire:click="callNext" @if($queueCount === 0) disabled @endif class="w-full py-5 px-8 bg-white border-2 border-black text-black text-sm font-bold rounded-2xl hover:bg-slate-50 hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-widest">
+                        <button wire:click="callNext" @if($queueCount === 0) disabled @endif class="w-full py-5 px-8 bg-[#1c1c1e] text-white text-sm font-bold rounded-2xl hover:bg-black hover:shadow-lg transition-all disabled:opacity-30 disabled:cursor-not-allowed uppercase tracking-widest shadow-xl shadow-black/10">
                             Pull Next Client
                         </button>
                     </div>
@@ -71,8 +70,7 @@
                             <!-- List Item -->
                             <div class="flex items-center justify-between p-4 rounded-2xl hover:bg-[#f4f6f8] transition-colors group">
                                 <div class="flex items-center space-x-4">
-                                    <!-- Avatar/Icon Circle -->
-                                    <div class="w-12 h-12 rounded-full bg-[#e2e8f0] text-slate-900 flex items-center justify-center font-bold text-lg shadow-sm">
+                                    <div class="w-12 h-12 rounded-full bg-[#1c1c1e] text-white flex items-center justify-center font-bold text-lg shadow-sm">
                                         {{ substr($q->number, 0, 1) }}
                                     </div>
                                     <div>
@@ -98,7 +96,7 @@
                     <!-- Optional View All Button -->
                     @if(count($queues) > 0)
                     <div class="mt-6 pt-4 border-t border-gray-100">
-                        <button class="w-full py-3.5 bg-white border-2 border-black text-black text-sm font-bold rounded-xl hover:bg-slate-50 hover:shadow-lg transition-all uppercase tracking-widest">
+                        <button class="w-full py-3.5 bg-[#f4f6f8] text-slate-800 text-sm font-bold rounded-xl hover:bg-gray-200 transition-colors uppercase tracking-widest">
                             View All History
                         </button>
                     </div>
