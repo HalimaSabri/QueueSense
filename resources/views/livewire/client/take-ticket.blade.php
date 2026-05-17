@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-[#f4f6f8] flex flex-col items-center justify-center p-6 text-slate-900 font-sans">
     <!-- Professional Top Navigation -->
     <div class="absolute top-8 right-8 z-20">
-        <a href="{{ route('login') }}" class="group px-6 py-3 bg-transparent border-2 border-slate-900 rounded-2xl text-slate-900 hover:bg-slate-50 hover:shadow-lg transition-all text-xs font-bold uppercase tracking-widest flex items-center">
+        <a href="{{ route('login') }}" class="group px-6 py-3 bg-transparent border-2 border-black rounded-2xl text-black hover:bg-slate-50 hover:shadow-lg transition-all text-xs font-bold uppercase tracking-widest flex items-center">
             Staff Portal
         </a>
     </div>
@@ -19,7 +19,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @forelse($services as $service)
                 <button wire:click="takeTicket({{ $service->id }})" 
-                    class="group relative flex flex-col h-full bg-transparent border-2 border-slate-900 rounded-[2.5rem] p-10 text-left transition-all duration-300 hover:bg-slate-50 hover:shadow-lg hover:-translate-y-1">
+                    class="group relative flex flex-col h-full bg-transparent border-2 border-black rounded-[2.5rem] p-10 text-left transition-all duration-300 hover:bg-slate-50 hover:shadow-lg hover:-translate-y-1">
                     
                     <div class="w-16 h-16 rounded-[1.5rem] bg-[#f4f6f8] flex items-center justify-center mb-8 group-hover:bg-[#e2e8f0] transition-colors duration-300 shadow-sm border border-transparent group-hover:border-slate-300/50">
                         <svg class="w-8 h-8 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
