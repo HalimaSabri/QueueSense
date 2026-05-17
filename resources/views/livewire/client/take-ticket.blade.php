@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-[#f4f6f8] flex flex-col items-center justify-center p-6 text-slate-900 font-sans">
+<div class="min-h-screen bg-[#f4f6f8] flex flex-col items-center justify-center p-6 text-slate-900 font-sans" wire:poll.keep-alive>
     <!-- Professional Top Navigation -->
     <div class="absolute top-8 right-8 z-20">
         <a href="{{ route('login') }}" class="group px-6 py-3 bg-[#1c1c1e] text-white rounded-2xl hover:bg-black hover:shadow-lg transition-all text-xs font-bold uppercase tracking-widest flex items-center shadow-lg shadow-black/10">
