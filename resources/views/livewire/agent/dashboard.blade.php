@@ -32,7 +32,7 @@
                             {{ $activeTicket->number }}
                         </div>
                         
-                        <button wire:click="completeService" class="group w-full py-5 px-8 bg-white text-slate-900 text-sm font-bold rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center mx-auto shadow-sm">
+                        <button wire:click="completeService" class="group w-full py-5 px-8 bg-transparent border-2 border-slate-900 text-slate-900 text-sm font-bold rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center mx-auto hover:shadow-lg uppercase tracking-widest">
                             Complete Session
                             <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
                         </button>
@@ -98,7 +98,7 @@
                     <!-- Optional View All Button -->
                     @if(count($queues) > 0)
                     <div class="mt-6 pt-4 border-t border-gray-100">
-                        <button class="w-full py-3.5 bg-[#f4f6f8] text-slate-800 text-sm font-bold rounded-xl hover:bg-gray-200 transition-colors">
+                        <button class="w-full py-3.5 bg-transparent border-2 border-slate-900 text-slate-900 text-sm font-bold rounded-xl hover:bg-slate-50 hover:shadow-lg transition-all uppercase tracking-widest">
                             View All History
                         </button>
                     </div>
