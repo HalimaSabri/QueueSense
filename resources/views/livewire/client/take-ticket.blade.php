@@ -21,8 +21,8 @@
                 <button wire:click="takeTicket({{ $service->id }})" 
                     class="group relative flex flex-col h-full bg-white border border-gray-200/60 rounded-[2.5rem] p-10 text-left transition-all duration-300 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1">
                     
-                    <div class="w-16 h-16 rounded-[1.5rem] bg-[#f4f6f8] flex items-center justify-center mb-8 group-hover:bg-[#1c1c1e] transition-colors duration-300 shadow-sm">
-                        <svg class="w-8 h-8 text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <div class="w-16 h-16 rounded-[1.5rem] bg-[#f4f6f8] flex items-center justify-center mb-8 group-hover:bg-[#e2e8f0] transition-colors duration-300 shadow-sm border border-transparent group-hover:border-slate-300/50">
+                        <svg class="w-8 h-8 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
 
                     <h3 class="text-2xl font-bold text-slate-900 mb-4 font-['Outfit']">{{ $service->name }}</h3>
@@ -33,8 +33,8 @@
                             <span class="block text-xs text-slate-400 font-semibold mb-1">Current Wait</span>
                             <span class="text-xl font-bold text-slate-900">{{ $service->average_time }} <span class="text-xs text-slate-500 font-medium">min</span></span>
                         </div>
-                        <div class="w-12 h-12 rounded-full border border-gray-200/60 bg-[#f4f6f8] flex items-center justify-center group-hover:bg-[#1c1c1e] group-hover:border-[#1c1c1e] transition-colors duration-300">
-                            <svg class="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                        <div class="w-12 h-12 rounded-full border border-gray-200/60 bg-[#f4f6f8] flex items-center justify-center group-hover:bg-[#e2e8f0] group-hover:border-slate-300/50 transition-colors duration-300">
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
                         </div>
                     </div>
                 </button>

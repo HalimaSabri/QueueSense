@@ -23,10 +23,10 @@ new class extends Component
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" wire:navigate class="flex items-center group">
-                        <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <div class="w-10 h-10 bg-[#e2e8f0] rounded-xl flex items-center justify-center shadow-sm border border-slate-300/50">
+                            <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
-                        <span class="ms-3 text-2xl font-bold tracking-tight text-slate-900 font-['Outfit']">Queue<span class="text-indigo-600">Sense</span></span>
+                        <span class="ms-3 text-2xl font-bold tracking-tight text-slate-900 font-['Outfit']">Queue<span class="text-slate-400">Sense</span></span>
                     </a>
                 </div>
 

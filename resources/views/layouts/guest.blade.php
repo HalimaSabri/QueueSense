@@ -19,8 +19,8 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center p-6 relative">
             <div class="relative z-10 mb-12">
                 <a href="/" wire:navigate class="flex flex-col items-center group">
-                    <div class="w-16 h-16 bg-[#1c1c1e] rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <div class="w-16 h-16 bg-[#e2e8f0] rounded-3xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform border border-slate-300/50">
+                        <svg class="w-8 h-8 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <span class="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 font-['Outfit']">QueueSense</span>
                 </a>
